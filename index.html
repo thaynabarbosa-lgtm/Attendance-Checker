@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 320px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      background: #4facfe;
+      border: none;
+      color: white;
+      font-size: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #2196f3;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #e3f2fd;
+      color: #1976d2;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>📊 Attendance Checker</h2>
+  <p>Enter your Student ID to view attendance</p>
+
+  <input type="text" id="studentId" placeholder="e.g. 443271741">
+  <button onclick="checkAttendance()">Check Attendance</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+const data = {
+
+  "443271741": 66.7,
+  "459357955": 77,
+  "445287946": 61.1,
+  "444730439": 79.4,
+  "450395749": 88.9,
+  "443485341": 96.8,
+  "454856121": 77,
+  "444952288": 72.2,
+  "443889183": 87.3,
+  "444812141": 97.6,
+  "445272337": 87.3,
+  "445132535": 100,
+  "444718692": 96.8,
+  "444630493": 87.3,
+  "444314249": 90.5,
+  "444667885": 76.2,
+  "444777753": 98.3,
+  "445187623": 67.5,
+  "443891315": 87.3,
+  "444892374": 67.5,
+  "444592524": 50,
+  "444045094": 71.4,
+  "444658568": 92.9,
+  "451496565": 78.6,
+  "445208957": 12.7,
+  "444535377": 93.7,
+  "444818140": 88.1,
+  "445075361": 83.3,
+  "445207691": 89.7,
+  "442725985": 12.7,
+  "458533423": 44.4,
+  "458759065": 64.3,
+  "444027576": 89.7,
+  "451037285": 63.5,
+  "446925989": 76.2,
+  "455780900": 93.7,
+  "450658481": 75.4,
+  "444057793": 97.6,
+  "444077263": 100,
+  "457555407": 92.1,
+  "458419701": 95.2,
+  "458659940": 90.5,
+  "444956682": 77.8,
+  "444708671": 94.4,
+  "445034673": 98.4,
+  "445143243": 98.4,
+  "445031119": 73.8,
+  "456744451": 93.7,
+  "444719290": 100,
+  "457427808": 75.4,
+  "456813305": 92.9,
+  "444013087": 80,
+  "444971509": 98.4,
+  "445004642": 84.9,
+  "445005088": 83.3,
+  "457061111": 70.6,
+  "458069808": 61.9,
+  "458531234": 77,
+  "444820021": 89.7,
+  "443610952": 88.8,
+  "458660042": 71.4,
+  "445878553": 63.5,
+  "444051345": 7.1,
+  "456704441": 62.7,
+  "455183936": 74.6,
+  "444676078": 93.7,
+  "445290009": 82.8,
+  "445865222": 72.2,
+  "457030797": 100,
+  "443798889": 92.9,
+  "445328715": 93.7,
+  "456696023": 74.6,
+  "445302473": 92.9,
+  "445114723": 77.8,
+  "457794398": 99.2,
+  "443924451": 90.5,
+  "453101541": 72.2,
+  "451973771": 89.7,
+  "457659270": 100,
+  "458431264": 92.1,
+  "443722645": 74.6,
+  "444058307": 98.4,
+  "458087521": 91.7,
+  "444935707": 90.5
+
+};
+
+function checkAttendance() {
+  let id = document.getElementById("studentId").value.trim();
+  let result = document.getElementById("result");
+
+  if (data[id] !== undefined) {
+    let percent = data[id];
+
+    result.innerHTML =
+      "Attendance: <span class='badge'>" + percent + "%</span>";
+  } else {
+    result.innerHTML = "❌ Student ID not found";
+  }
+}
+</script>
+
+</body>
+</html>
