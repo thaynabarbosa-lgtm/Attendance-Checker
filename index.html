@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 320px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      background: #4facfe;
+      border: none;
+      color: white;
+      font-size: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #2196f3;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #e3f2fd;
+      color: #1976d2;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>📊 Attendance Checker</h2>
+  <p>Enter your Student ID to view attendance</p>
+
+  <input type="text" id="studentId" placeholder="e.g. 443271741">
+  <button onclick="checkAttendance()">Check Attendance</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+const data = {
+  "443271741": 66.7,
+  "459357955": 77,
+  "445287946": 61.1,
+  "444730439": 79.4,
+  "450395749": 88.9,
+  "443485341": 96.8,
+  "454856121": 77,
+  "444952288": 72.2,
+  "443889183": 87.3,
+  "444812141": 97.6,
+  "445272337": 87.3,
+  "445132535": 100,
+  "444718692": 96.8,
+  "444630493": 87.3,
+  "444314249": 90.5,
+  "444667885": 76.2,
+  "444777753": 98.3,
+  "445187623": 67.5,
+  "443891315": 87.3,
+  "444892374": 67.5,
+  "444592524": 50,
+  "444045094": 71.4,
+  "444658568": 92.9,
+  "451496565": 78.6
+};
+
+function checkAttendance() {
+  let id = document.getElementById("studentId").value.trim();
+  let result = document.getElementById("result");
+
+  if (data[id] !== undefined) {
+    let percent = data[id];
+
+    result.innerHTML =
+      "Attendance: <span class='badge'>" + percent + "%</span>";
+  } else {
+    result.innerHTML = "❌ Student ID not found";
+  }
+}
+</script>
+
+</body>
+</html>
